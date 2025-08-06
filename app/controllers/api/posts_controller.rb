@@ -3,19 +3,19 @@ class Api::PostsController < ApplicationController
     posts = Post.all
     render json: posts
   end
-end
 
-def create
-  post = Post.new(post_params)
-  if post.save
-    render json: post, status: :created
-  else
-    render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+  def create
+    post = Post.new(post_params)
+    if post.save
+      render json: post, status: :created
+    else
+      render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+    end
   end
-end
 
-private
+  private
 
-def post_params
-  params.require(:post).permit(:name, :genre, :rating, :address, :description, :area, :image)
+  def post_params
+    params.require(:post).permit(:name, :genre, :rating, :address, :description, :area, :image)
+  end
 end
