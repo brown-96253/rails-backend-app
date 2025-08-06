@@ -14,7 +14,7 @@ gem "puma", ">= 5.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "debug", platforms: %i[ mri mswin mingw ], require: "debug/prelude"
+# gem "debug", platforms: %i[ mri mswin mingw ], require: "debug/prelude"
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"
