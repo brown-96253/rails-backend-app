@@ -68,3 +68,4 @@ RAILS_ENV=development
 
 ## 今後の予定
 - 認証機能の追加
+
