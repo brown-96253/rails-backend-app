@@ -14,7 +14,7 @@ test:
   <<: *default
   database: rails_backend_app_test
   username: <%= ENV.fetch("PGUSER", "postgres") %>
-  password: <%= ENV.fetch("PGPASSWORD", "password") %>
+  password: <%= ENV.fetch("PGPASSWORD", "") %>
   host: <%= ENV.fetch("PGHOST", "localhost") %>
 
 production:
