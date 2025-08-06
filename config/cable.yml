@@ -7,3 +7,5 @@ development:
 
 test:
   adapter: test
+
+production:
