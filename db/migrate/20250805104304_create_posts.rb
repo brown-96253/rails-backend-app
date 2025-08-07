@@ -7,7 +7,7 @@ class CreatePosts < ActiveRecord::Migration[8.0]
       t.string :address
       t.text :description
       t.string :area
-
+      t.string :image
       t.timestamps
     end
   end

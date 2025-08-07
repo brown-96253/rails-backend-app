@@ -2,6 +2,10 @@
 
 シンプルなグルメ情報共有アプリ「Your Menu」のバックエンドAPIサーバーです。
 本プロジェクトは Rails と PostgreSQL を使用したAPIサーバーで、Next.js フロントエンドに対してJSONデータを提供します。
+## リポジトリ構成について
+
+本プロジェクトはフロントエンドとバックエンドが別リポジトリに分かれています。  
+フロントエンドのリポジトリはこちらです → https://github.com/brown-96253/gourmet-app-rails-test
 
 ## 使用技術
 
@@ -16,41 +20,41 @@
 - JSON形式のAPIレスポンス
 - フロントエンド（Next.js）との連携に対応したCORS設定
 
-## 起動方法
+## 起動方法（ローカル環境）
 
 ### 前提条件
 - Ruby 3.2.2（.ruby-version または Gemfile で確認してください）
 - PostgreSQL
 - Bundler
 
-### インストール手順
+### 1. このリポジトリをダウンロードまたはクローンしてください
+```bash
+git clone https://github.com/brown-96253/rails-backend-app.git
+cd rails-backend-app
+```
 
-1. **依存ライブラリをインストール**
-
+2. **依存ライブラリをインストール**
 ```bash
 bundle install
 ```
 
-2. **データベースをセットアップ**
-
+3. **データベースをセットアップ**
 ```bash
 rails db:create
 rails db:migrate
+rails db:seed
 ```
 
-3. **サーバーを起動**
+4. **サーバーを起動**
 ```bash
 rails server
 ```
-
-ローカル環境ではデフォルトで http://localhost:3001 にて起動します。  
-必要に応じて -p オプションでポート番号を変更可能です。
-本番環境では Render.com などのホスティングサービスが提供するURLになります。
-実際の公開URLはデプロイ後にサービスから通知されますので、そちらに合わせて設定してください。
+デフォルトで http://localhost:3000 にて起動します。
+必要に応じて -p オプションでポート番号を変更してください。
 
 ## 環境設定
 
-.env ファイルを作成し、以下の環境変数を設定してください（.env は .gitignore に含まれています）：
+.env ファイルを作成し、以下の環境変数を設定してください（.envは.gitignoreに含まれています）：
 ```env
 DATABASE_URL=postgres://user:password@localhost:5432/your_db_name
 RAILS_ENV=development
@@ -68,4 +72,3 @@ RAILS_ENV=development
 
 ## 今後の予定
 - 認証機能の追加
-

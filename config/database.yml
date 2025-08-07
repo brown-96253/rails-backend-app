@@ -5,7 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: rails_backend_app_development
+  database: railway_development
+  username: <%= ENV['PGUSER'] %>
+  password: <%= ENV['PGPASSWORD'] %>
+  host: <%= ENV['PGHOST'] %>
+  port: 5432
 
 test:
   <<: *default
