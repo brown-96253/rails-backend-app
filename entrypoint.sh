@@ -1,16 +1,14 @@
 #!/bin/bash
-set -e
-
 echo "=== Starting Rails Application ==="
 
-# データベース作成
 echo "Creating database..."
-bundle exec rails db:create
+bundle exec rails db:create || echo "Database already exists"
 
-# マイグレーション実行
 echo "Running migrations..."
 bundle exec rails db:migrate
 
-# サーバー起動
-echo "Starting server on port 8080..."
-exec bundle exec rails server -b 0.0.0.0 -p 8080
+echo "Loading seed data..."
+bundle exec rails db:seed
+
+echo "Starting server on port $PORT..."
+exec bundle exec rails server -b 0.0.0.0 -p $PORT
