@@ -16,9 +16,6 @@ gem "puma", ">= 5.0"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem "debug", platforms: %i[ mri mswin mingw ], require: "debug/prelude"
 
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cable"
-
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
