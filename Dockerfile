@@ -46,6 +46,10 @@ FROM base
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
+# entrypoint.shをコピー（railsユーザーに変更前に実行）
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
@@ -55,5 +59,5 @@ USER 1000:1000
 # Railwayのポート設定に対応（8080を使用）
 EXPOSE 8080
 
-# データベース準備とサーバー起動（db:prepareを使用、ポート8080で起動）
-CMD ["sh", "-c", "bundle exec rails db:create db:migrate && bundle exec rails server -b 0.0.0.0 -p 8080"]
+# entrypoint.shを実行
+CMD ["/usr/local/bin/entrypoint.sh"]
