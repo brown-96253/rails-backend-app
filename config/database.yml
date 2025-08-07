@@ -12,5 +12,5 @@ test:
   database: rails_backend_app_test
 
 production:
-  <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
