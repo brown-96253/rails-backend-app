@@ -56,4 +56,4 @@ USER 1000:1000
 EXPOSE 8080
 
 # データベース準備とサーバー起動（db:prepareを使用、ポート8080で起動）
-CMD ["sh", "-c", "bundle exec rails db:prepare && bundle exec rails server -b 0.0.0.0 -p 8080"]
+CMD ["sh", "-c", "bundle exec rails db:create db:migrate && bundle exec rails server -b 0.0.0.0 -p 8080"]
