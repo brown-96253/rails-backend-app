@@ -56,19 +56,23 @@ rails server
 
 .env ファイルを作成し、以下の環境変数を設定してください（.envは.gitignoreに含まれています）：
 ```env
-DATABASE_URL=postgres://user:password@localhost:5432/your_db_name
+PGUSER=your_db_user
+PGPASSWORD=your_db_password
+PGHOST=localhost
+PGDATABASE=railway_development
 RAILS_ENV=development
+SECRET_KEY_BASE=xxxxxx（credentials:edit で生成されるもの）
 ```
 
 ## API仕様
 
 本APIは店舗情報の管理を目的としています。  
 以下のHTTPメソッドとURLで操作できます：
-- 店舗一覧取得: GET /api/restaurants
-- 店舗詳細取得: GET /api/restaurants/:id
-- 店舗作成: POST /api/restaurants
-- 店舗更新: PUT /api/restaurants/:id
-- 店舗削除: DELETE /api/restaurants/:id
+- 店舗一覧取得: GET /api/posts
+- 店舗詳細取得: GET /api/posts/:id
+- 店舗作成: POST /api/posts
+- 店舗更新: PUT /api/posts/:id
+- 店舗削除: DELETE /api/posts/:id
 
 ## 今後の予定
 - 認証機能の追加
