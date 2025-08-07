@@ -2,7 +2,7 @@
 echo "=== Starting Rails Application ==="
 
 echo "Creating database..."
-bundle exec rails db:create || echo "Database already exists"
+bundle exec rails db:create
 
 echo "Running migrations..."
 bundle exec rails db:migrate
