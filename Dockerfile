@@ -52,6 +52,8 @@ RUN groupadd --system --gid 1000 rails && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
 
-# データベース準備とサーバー起動を一つのコマンドで実行
-EXPOSE 3000
-CMD ["sh", "-c", "bundle exec rails db:prepare && bundle exec rails server -b 0.0.0.0 -p 3000"]# Force rebuild 2025年 8月 7日 木曜日 14時54分37秒 JST
+# Railwayのポート設定に対応（8080を使用）
+EXPOSE 8080
+
+# データベース準備とサーバー起動（db:prepareを使用、ポート8080で起動）
+CMD ["sh", "-c", "bundle exec rails db:prepare && bundle exec rails server -b 0.0.0.0 -p 8080"]
