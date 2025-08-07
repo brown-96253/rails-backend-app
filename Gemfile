@@ -42,4 +42,6 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "dotenv-rails"
+
+  gem "rack-cors"
 end
