@@ -22,7 +22,7 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
-# Install packages needed to build gems
+# Install packages needed to build gems including libpq-dev for PostgreSQL
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
@@ -49,14 +49,9 @@ COPY --from=build /rails /rails
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp && \
-    chmod +x /rails/bin/docker-entrypoint
-
+    chown -R rails:rails db log storage tmp
 USER 1000:1000
 
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start server
+# データベース準備とサーバー起動を一つのコマンドで実行
 EXPOSE 3000
-CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["sh", "-c", "bundle exec rails db:prepare && bundle exec rails server -b 0.0.0.0 -p 3000"]
