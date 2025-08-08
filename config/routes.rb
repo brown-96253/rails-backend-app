@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   
   # APIルート
   namespace :api do
-    resources :posts, only: [ :index, :create, :show ] 
+    resources :posts, only: [ :index, :create, :show ]
   end
 end
