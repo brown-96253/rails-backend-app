@@ -45,5 +45,5 @@ group :development, :test do
 
   gem "rack-cors"
 
-  gem 'dotenv-rails', groups: [:development, :test]
+  gem "dotenv-rails", groups: [:development, :test]
 end
